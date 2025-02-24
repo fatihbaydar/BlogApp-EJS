@@ -5,13 +5,8 @@ const BlogPost = require("../../models/blogPostModel");
 
 module.exports = {
   list: async (req, res) => {
-    const data = await res.getModelList(BlogPost,{}, "blogCategoryId");
-    res.status(200).send({
-      error: false,
-      count: data.length,
-      details: await res.getModelListDetails(BlogPost),
-      result: data,
-    });
+    const data = await res.getModelList(BlogPost, {}, "blogCategoryId");
+    res.render("index")
   },
 
   create: async (req, res) => {
