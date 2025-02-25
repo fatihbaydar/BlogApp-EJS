@@ -6,10 +6,10 @@ const BlogCategory = require("../../models/blogCategoryModel")
 
 module.exports = {
   list: async (req, res) => {
-    const data = await res.getModelList(BlogPost, {}, "blogCategoryId");
+    const posts = await res.getModelList(BlogPost, {}, "blogCategoryId");
     const categories = await BlogCategory.find({})
 
-    res.render("index", { categories})
+    res.render("index", { categories, posts})
   },
 
   create: async (req, res) => {
