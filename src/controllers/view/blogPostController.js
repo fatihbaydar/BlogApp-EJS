@@ -1,12 +1,15 @@
 "use strict";
 
 const BlogPost = require("../../models/blogPostModel");
+const BlogCategory = require("../../models/blogCategoryModel")
 
 
 module.exports = {
   list: async (req, res) => {
     const data = await res.getModelList(BlogPost, {}, "blogCategoryId");
-    res.render("index")
+    const categories = await BlogCategory.find({})
+
+    res.render("index", { categories})
   },
 
   create: async (req, res) => {
