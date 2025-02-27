@@ -1,6 +1,8 @@
 <nav class="blog-pagination" aria-label="Pagination">
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '': 'disabled' %}" href="?page=1">&laquo</a>
 
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '': 'disabled' %}" href="?page= {%= details.pages.previous %}">Prev</a>
+
     {% if(details.pages.current>3){ %}
     <span class="btn btn-outline-primary rounded-pill">...</span>
     {% } %}
@@ -14,6 +16,7 @@
     {% if(details.pages.current < details.pages.total-3){ %}
     <span class="btn btn-outline-primary rounded-pill">...</span>
     {% } %}
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.next %}">next</a>
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.total %}">&raquo</a>
 
 </nav>
