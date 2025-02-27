@@ -10,6 +10,11 @@
     {%= details.pages.list[index] %}
     </a>
     {% } %}
-    
+
+    {% if(details.pages.current < details.pages.total-3){ %}
+    <span class="btn btn-outline-primary rounded-pill">...</span>
+    {% } %}
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.total %}">&raquo</a>
+
 </nav>
 <p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
