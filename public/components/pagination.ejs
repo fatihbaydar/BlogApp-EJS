@@ -1,14 +1,14 @@
 <nav class="blog-pagination" aria-label="Pagination">
-    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '': 'disabled' %}" href="?page=1">&laquo</a>
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '': 'disabled' %}" href="?page=1+{%= pageUrl %}">&laquo</a>
 
-    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '': 'disabled' %}" href="?page= {%= details.pages.previous %}">Prev</a>
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '': 'disabled' %}" href="?page= {%= details.pages.previous + pageUrl%}">Prev</a>
 
     {% if(details.pages.current>3){ %}
     <span class="btn btn-outline-primary rounded-pill">...</span>
     {% } %}
 
     {% for (index in details.pages.list ){ %}
-    <a class="btn rounded-pill {%= details.pages.list[index] == details.pages.current ? 'btn-primary': 'btn-outline-primary' %}" href=" ?page={%= details.pages.list[index] %}">
+    <a class="btn rounded-pill {%= details.pages.list[index] == details.pages.current ? 'btn-primary': 'btn-outline-primary' %}" href=" ?page={%= details.pages.list[index] +pageUrl%}">
     {%= details.pages.list[index] %}
     </a>
     {% } %}
@@ -16,8 +16,8 @@
     {% if(details.pages.current < details.pages.total-3){ %}
     <span class="btn btn-outline-primary rounded-pill">...</span>
     {% } %}
-    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.next %}">next</a>
-    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.total %}">&raquo</a>
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.next + pageUrl%}">next</a>
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '': 'disabled' %}" href="?page={%= details.pages.total + pageUrl%}">&raquo</a>
 
 </nav>
 <p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
