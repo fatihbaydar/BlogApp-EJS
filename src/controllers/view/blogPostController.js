@@ -27,13 +27,16 @@ module.exports = {
   },
 
   create: async (req, res) => {
-    const data = await BlogPost.create(req.body);
+    
+    if (req.method == "POST") {
+      req.body.userId=req.session?.user.id
+      const data = await BlogPost.create(req.body);
+      if(data) res.redirect("/blog/post")
 
-    res.status(201).send({
-      error: false,
-      body: req.body,
-      result: data,
-    });
+    } else {
+      const categories = await BlogCategory.find()
+      res.render("postForm", { categories })
+    }
   },
 
   read: async (req, res) => {
